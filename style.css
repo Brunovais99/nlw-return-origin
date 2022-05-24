@@ -35,8 +35,79 @@ ul {
     list-style: none;
 }
 
+img {
+    max-width: 100%;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.6rem;
+
+    background-color: var(--brand-green);
+
+    width: fit-content;
+
+    border-radius: 4rem;
+    border: none;
+
+    margin-bottom: 6rem;
+    margin-right: auto;
+    margin-left: auto;
+
+    padding: 1.6rem 3.2rem;
+
+    color:var(--white);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: var(--brand-green-hover);
+    transition: background 200ms;
+}
+
 section {
     padding-block: 10rem;
+}
+
+section header h4 {
+    color: var(--brand-green);
+
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.08rem;
+    line-height: 150%;
+    
+    text-transform: uppercase;
+    
+    margin-bottom: 1.6rem;
+}
+
+section header h2 {
+    color: var(--gray-headline);
+
+    font-size: 3rem;
+    line-height: 3.9rem;
+
+    
+}
+
+section header h1 {
+    font-size: 3.4rem;
+    color: var(--gray-headline);
+    margin-bottom: 2.4rem;
+    line-height: 138%;
+}
+
+section .content p {
+    color: var(--gray-paragraph);
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 150%;
 }
 
 body {
@@ -50,7 +121,7 @@ body {
 }
 
 .wrapper {
-    width: 37.5rem;
+    width: min(50rem, 100%);
 
     margin-inline: auto;
     padding-inline: 2.4rem;
@@ -63,11 +134,12 @@ nav {
     display:flex;
 
     height: var(--nav-height);
+    width: 100vw;
 
     position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+
+    z-index: 100;
 }
 
 nav .wrapper {
@@ -76,14 +148,15 @@ nav .wrapper {
     justify-content: space-between;
 }
 
-nav.scroll {
-    background:var(--brand-green);
-    width: 100vw;
+nav .menu, nav .closeMenu {
     position: fixed;
-    top: 0;
 }
 
-nav.scroll svg:nth-child(1) path {
+nav.scroll {
+    background:var(--brand-green);
+}
+
+nav.scroll .logo path {
     fill: white;
 }
 
@@ -104,7 +177,7 @@ body.menuExpanded {
 
 
 body.menuExpanded > :not(nav) {
-    display: none;
+    visibility: hidden;
 }
 
 .menu, .closeMenu, body.menuExpanded .openMenu {
@@ -119,8 +192,11 @@ body.menuExpanded .menu, body.menuExpanded .closeMenu {
     display: block;
 }
 
+.menu {
+    transform: translateY(100%);
+}
+
 body.menuExpanded .menu {
-    position: fixed;
     top: 0;
     left: 0;
 
@@ -130,10 +206,10 @@ body.menuExpanded .menu {
     height: 100vh;
 
     padding-top: var(--nav-height);
-}
 
-body.menuExpanded nav {
-    position: relative;
+    transition: transform 300ms;
+
+    transform: translateY(0);
 }
 
 body.menuExpanded .logo, body.menuExpanded button {
@@ -198,12 +274,17 @@ body.menuExpanded button path {
 
 }
 
-/*======= HEADER ========================================*/
-header {
+.menu .button:hover {
+    background-color: var(--brand-green-hover);
+    color: white;
+}
+
+/*======= HOME========================================*/
+#home {
     margin-top: calc(4.1rem + var(--nav-height));
 }
 
-header::before {
+#home::before {
     display: block;
     
     position: absolute;
@@ -219,50 +300,17 @@ header::before {
     height: calc(108rem + var(--nav-height));
 }
 
-
-header h4 {
-    font-size: 1.4rem;
-    color: var(--primary-color);
-    margin-bottom: 1.6rem;
+#home .button {
+    margin-inline: auto;
 }
 
-header h1 {
-    font-size: 3.4rem;
-    color: var(--gray-headline);
-    margin-bottom: 2.4rem;
-}
-
-header p {
+#home p {
     font-size: 1.8rem;
     color: var(--gray-paragraph);
     margin-bottom: 3.2rem;
 }
 
-header button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.6rem;
-
-    background: var(--brand-green);
-
-    width: 26.3rem;
-    height: 5.2rem;
-
-    border-radius: 4rem;
-    border: none;
-
-    margin-bottom: 6rem;
-    margin-right: auto;
-    margin-left: auto;
-
-    color:var(--white);
-    font-size: 1.4rem;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-header img {
+#home img {
     display: block;
 
     width: 26.4rem;
@@ -272,7 +320,7 @@ header img {
     object-position: 0 2rem;
 }
 
-.stats {
+#home .stats {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -281,7 +329,7 @@ header img {
 
     background-color: var(--brand-beige);
 
-    width:32.7rem;
+    width:100%;
 
     margin-inline: auto;
     padding-block: 4rem; /* pading top e bottom */
@@ -290,7 +338,7 @@ header img {
     border-radius: 6px;
 }
 
-.stat h3 {
+#home .stat h3 {
     color: var(--gray-headline);
     font-size: 4.8rem;
     line-height: 150%;
@@ -298,35 +346,16 @@ header img {
     margin-bottom: 0.4rem;
 }
 
-.stat p {
+#home .stat p {
     color: var(--brand-green);
     margin: 0;
 }
 
 /*======= SERVICES ========================================*/
-
-
-#services header h4 {
-    color: var(--brand-green);
-
-    font-size: 1.4rem;
-    line-height: 150%;
-
-    letter-spacing: 0.08rem;
-
-    text-transform: uppercase;
-
-    margin-bottom: 1.6rem;
-}
-
 #services header h2 {
-    color: var(--gray-headline);
-
-    font-size: 3rem;
-    line-height: 3.9rem;
-
     margin-bottom: 6rem;
 }
+
 
 #services .cards {
     display: flex;
@@ -348,3 +377,220 @@ header img {
 #services .card h3 {
     margin-block: 1.6rem;
 }
+
+/*======= ABOUT ========================================*/
+#about {
+    background-color: var(--brand-beige);
+    text-align: left;
+}
+
+#about header h2 {
+    margin-bottom: 2.4rem;
+}
+
+#about .content p {
+    margin-top: 2.4rem;
+    margin-bottom: 6rem; 
+}
+
+/*======= CONTACT ========================================*/
+
+#contact {
+    text-align: left;
+}
+
+#contact header {
+    margin-bottom: 3.2rem;
+}
+
+#contact ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+
+    margin-bottom: 3.2rem;
+}
+
+#contact ul li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+/*======= FOOTER ========================================*/
+footer {
+    background-color: var(--brand-green);
+    padding-block: 6rem;
+
+    text-align: left;
+
+    color: white;
+}
+
+footer .logo {
+    display: inline-block;
+    margin-bottom: 2.4rem;
+}
+
+footer .logo svg {
+    width: 23.6rem;
+    height: 3.1rem;
+}
+
+footer .logo path { 
+    fill: white;
+}
+
+footer p { 
+    color: var(--brand-beige);
+    line-height: 2;
+
+    margin-bottom: 3.2rem;
+}
+
+footer .socialLinks {
+    justify-content: left;
+}
+
+/*======= BACK TO TOP ========================================*/
+
+#backToTopButton {
+    position: fixed;
+    bottom: 1rem;
+    right: 2.5rem;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(100%);
+    transition: 200ms;
+}
+
+#backToTopButton.show {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+
+/*======= RESPONSIVE ========================================*/
+@media (min-width: 1024px) {
+    /* geral */
+    .wrapper {
+        width: min(112rem, 100%);
+    }
+
+    /*======== navigation ===========*/
+    /* reset*/ 
+    nav#navigation .wrapper * {
+        margin: 0;
+        padding: 0;
+        visibility: initial;
+        display: initial;
+        opacity: initial;
+        flex-direction: initial;
+        position: initial;
+        font-size: initial;
+        transform: initial;
+        color: initial;
+        background-color: initial;
+        filter: initial;
+    }
+
+    nav#navigation .closeMenu,  nav#navigation .openMenu, nav#navigation .socialLinks {
+        display: none;
+    }
+
+    nav#navigation .menu {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 60%;
+    }
+
+    nav#navigation .menu ul:nth-child(1) {
+        display: flex;
+        gap: 3.2rem;
+    }
+
+    nav#navigation .menu ul li a {
+        color: var(--brand-green);
+        opacity: 0.7;
+    }
+
+    nav#navigation .menu a.button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem 2.4rem;
+        border: 1px solid var(--brand-green);
+        border-radius: 4rem;
+        color: var(--brand-green);
+        font-weight: 700;
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+        text-transform: uppercase;
+    }
+
+    nav#navigation .menu a.button:hover {
+        background-color: var(--brand-green);
+        color: white;
+        border: none;
+    }
+
+    nav#navigation.scroll .menu ul li a {    
+        color: var(--brand-green-light-02);
+        opacity: 0.6;
+    }
+
+    nav#navigation.scroll .menu a.button {
+        border-color: white;
+        color: white;
+
+    }
+
+    nav#navigation .menu li a {
+        transition: .4s;
+    }
+
+    nav#navigation .menu li a:hover, nav#navigation .menu li a.active {
+        opacity: 1;
+        font-weight: 700;
+    }
+
+    nav#navigation .menu li a:after {
+        content: " ";
+        display: block;
+        background-color: var(--brand-green);
+        width: 0;
+        height: 2px;
+        position: relative;
+        bottom: -1.9rem;
+        left: -0.5rem;
+        transition: width 0.2s
+    }    
+
+    nav#navigation.scroll .menu li a:after {
+        background-color: white;
+    }
+
+    nav#navigation .menu li a:hover:after, nav#navigation .menu li a.active:after {
+        width: 100%;
+        padding-inline: 0.8rem;
+    }
+
+    nav#navigation.scroll .menu li a:hover, nav#navigation.scroll .menu li a.active {
+        opacity: 1;
+    } 
+
+    nav#navigation.scroll .menu a.button:hover, nav#navigation.scroll .menu a.button.active {
+        background-color: var(--brand-green);
+        filter: brightness(1.2);
+        border: none;
+    }
+
+    /*======== home ===========*/
+    
+}
+
