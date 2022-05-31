@@ -10,8 +10,8 @@ Projeto construído durante o Next Level Week Return da Rocketseat
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
-- [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML))
-- [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS))
+- [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
+- [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
 
 
 
